@@ -27,3 +27,17 @@ console.log(rumah);
 
 const Hobby = ['futsal', 'badminton', 'renang']
 console.log(Array.isArray(rumah))
+
+
+const ab = 10;
+const bc = 10;
+const c = '10';
+
+console.log(ab == c);
+
+console.log(ab === c);
+
+console.log(ab != c);
+
+console.log(ab !== c);
+
