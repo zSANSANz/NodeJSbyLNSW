@@ -95,3 +95,55 @@ insert into pegawai.divisi(
 
 alter table pegawai.profile
 add divisi_id INT
+
+update pegawai.profile set
+	divisi_id = 2
+where id = '78a23660-57e5-43a1-a905-b0a890747618'
+
+--cool Join
+select * from pegawai.profile, pegawai.divisi 
+where pegawai.profile.divisi_id = pegawai.divisi.id
+
+--inner join == cool join kondisi terpenuhi
+select p.nip, p.nama_pegawai, d.nama_devisi
+from pegawai.profile p
+join pegawai.divisi d on d.id = p.divisi_id
+
+--left join = tampilkan yang null
+select p.nip, p.nama_pegawai, d.nama_devisi
+from pegawai.profile p
+left join pegawai.divisi d on d.id = p.divisi_id
+
+--right join = tampilkan yang null
+select p.nip, p.nama_pegawai, d.nama_devisi
+from pegawai.profile p
+right join pegawai.divisi d on d.id = p.divisi_id
+
+--order by 
+select p.nip, p.nama_pegawai, d.nama_devisi
+from pegawai.profile p
+left join pegawai.divisi d on d.id = p.divisi_id
+order by d.nama_devisi asc, p.nama_pegawai desc
+
+--group by
+select count(p.*) as banyak_pegawai, p.nama_pegawai
+from pegawai.profile p
+right join pegawai.divisi d on d.id = p.divisi_id
+group by d.nama_devisi, p.nip, p.nama_pegawai
+
+--limit 
+select p.nip, p.nama_pegawai, d.nama_devisi
+from pegawai.profile p
+join pegawai.divisi d on d.id = p.divisi_id
+limit 1
+
+--offset melewati 1
+select p.nip, p.nama_pegawai, d.nama_devisi
+from pegawai.profile p
+join pegawai.divisi d on d.id = p.divisi_id
+offset 1
+
+--distinct melewati duplikat
+select distinct p.nama_pegawai, p.divisi_id from
+pegawai.profile p
+
