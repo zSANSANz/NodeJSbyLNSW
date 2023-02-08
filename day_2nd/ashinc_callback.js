@@ -1,3 +1,4 @@
+//callback asynchronous
 const getmonth = (callback) => {
     setTimeout (() => {
         let error = true;
@@ -23,6 +24,9 @@ showMonth = (n, m) => {
 
 getmonth(showMonth)
 
+
+
+//promise
 let janjian = new Promise((resolve, reject)=> {
     let success = false
     if (success) {
@@ -32,7 +36,17 @@ let janjian = new Promise((resolve, reject)=> {
     }
 })
 
+//promise (then catch)
 janjian
 .then((result)=>{
     console.log(result)
 })
+.catch((error)=>{
+    console.log(error)
+})
+
+// async/await
+async function hellowWorld() {
+    let result = await doAsync()
+    console.log(result)
+}
