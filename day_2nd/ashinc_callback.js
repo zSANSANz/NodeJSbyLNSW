@@ -22,3 +22,17 @@ showMonth = (n, m) => {
 }
 
 getmonth(showMonth)
+
+let janjian = new Promise((resolve, reject)=> {
+    let success = false
+    if (success) {
+        resolve('berhasil')
+    } else {
+        reject(new Error('janji dibatalkan'))
+    }
+})
+
+janjian
+.then((result)=>{
+    console.log(result)
+})

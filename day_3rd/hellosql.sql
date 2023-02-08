@@ -55,3 +55,43 @@ delete from pegawai.profile
 where id = '3399eaf6-f4b3-45c8-bc5b-77bd352cf3cb'
 
 select * from pegawai.profile
+
+create table pegawai.divisi(
+	id serial primary key,
+	nama_devisi varchar(50) not null,
+	created_at timestamp not null,
+	updated_at timestamp
+)
+
+insert into pegawai.divisi(
+	nama_devisi,
+	created_at
+)values
+(
+	'backend developer',
+	now()
+),
+(
+	'frontend developer',
+	now()
+),
+(
+	'mobile developer',
+	now()
+),
+(
+	'devops',
+	now()
+),
+(
+	'cloud engineer',
+	now()
+),
+(
+	'data scientiest',
+	now()
+)
+
+
+alter table pegawai.profile
+add divisi_id INT
