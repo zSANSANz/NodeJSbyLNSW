@@ -109,6 +109,25 @@ model.updatePegawai = (data, nip) => {
     })
 }
 
+model.deletePegawai = (nip) => {
+    return new Promise((resolve, rejects) => {
+        console.log(nip)
+        db.query(`DELETE FROM pegawai.profile 
+            WHERE nip = $1                 
+            RETURNING *`,
+            [
+                nip
+            ],
+        (err, res) => {
+            if(err) {
+                rejects(err)
+            } else {
+                resolve(res.rows)
+            }
+        })
+    })
+}
+
 console.log(model)
 
 

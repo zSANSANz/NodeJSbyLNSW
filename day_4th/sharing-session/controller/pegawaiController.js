@@ -101,4 +101,25 @@ controller.updatePegawai = async (req, res) => {
     }
 }
 
+controller.deletePegawai = async (req, res) => {
+    try {
+        
+        let nip = req.params.nip
+
+        const result = await model.deletePegawai(nip)
+        res.status(200).json({
+            code: 200, 
+            message: 'Success',
+            data: `Berhasil menghapus data dengan nip = ${nip}`,
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({
+            code: 200, 
+            message: 'Error',
+            data: error,
+        })
+    }
+}
+
 module.exports = controller
