@@ -74,6 +74,41 @@ model.postPegawai = (data) => {
     })
 }
 
+model.updatePegawai = (data, nip) => {
+    return new Promise((resolve, rejects) => {
+        console.log(data)
+        db.query(`UPDATE pegawai.profile set 
+                nama_pegawai = $1,
+                alamat = $2,
+                tempat_lahir = $3,
+                tanggal_lahir = $4,
+                gender = $5,
+                usia = $6,
+                updated_at = $7,
+                divisi_id = $8
+            WHERE nip = $9                 
+            RETURNING *`,
+            [
+                data.nama_pegawai,
+                data.alamat,
+                data.tempat_lahir,
+                data.tanggal_lahir,
+                data.gender,
+                data.usia,
+                data.updated_at,
+                data.divisi_id,
+                nip
+            ],
+        (err, res) => {
+            if(err) {
+                rejects(err)
+            } else {
+                resolve(res.rows)
+            }
+        })
+    })
+}
+
 console.log(model)
 
 
