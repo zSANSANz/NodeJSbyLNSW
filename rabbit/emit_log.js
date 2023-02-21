@@ -1,8 +1,9 @@
 const amqp = require('amqplib/callback_api');
 
-const user = 'guest';
-const password = 'guest';
-const host = 'localhost:5672';
+const user = 'admin-dev';
+const password = 'adminDev123';
+const host = '10.239.9.60:5672/dev-gen2';
+
 
 const url = `amqp://${user}:${password}@${host}`;
 
