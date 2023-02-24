@@ -20,10 +20,10 @@ controller.getAllEmployee = async (req, res) => {
     }
 }
 
-controller.getEmployeeByNip = async (req, res) => {
+controller.getEmployeeByNik = async (req, res) => {
     try {
-        const nip = req.params.nip
-        const result = await model.getEmployeeByNip(nip)
+        const nik = req.params.nik
+        const result = await model.getEmployeeByNik(nik)
         res.status(200).json({
             code: 200, 
             message: 'Success',
@@ -40,20 +40,18 @@ controller.getEmployeeByNip = async (req, res) => {
 
 controller.postEmployee = async (req, res) => {
     try {
-        // let data = req.body
-
         let data = {
-            nip : req.body.nip,
-            nama_employee : req.body.nama_employee,
-            alamat : req.body.alamat,
-            tempat_lahir : req.body.tempat_lahir,
-            tanggal_lahir : req.body.tanggal_lahir,
-            gender : req.body.gender,
-            usia : req.body.usia,
-            created_at : new Date() 
+           nik: req.body.nik,
+           namaEmployee: req.body.employee_name,
+           alamat: req.body.alamat,
+           tempatLahir: req.body.tempat_lahir,
+           tanggalLahir: req.body.tanggal_lahir,
+           gender: req.body.gender,
+           usia: req.body.usia,
+           createdAt: new Date(), 
+           updatedAt: req.body.updated_at,
         }
 
-        data.created_at = new Date() 
         const result = await model.postEmployee(data)
         res.status(200).json({
             code: 200, 
@@ -73,7 +71,7 @@ controller.postEmployee = async (req, res) => {
 controller.updateEmployee = async (req, res) => {
     try {
         let data = {
-            nip : req.body.nip,
+            nik : req.body.nik,
             nama_employee : req.body.nama_employee,
             alamat : req.body.alamat,
             tempat_lahir : req.body.tempat_lahir,
@@ -83,10 +81,10 @@ controller.updateEmployee = async (req, res) => {
             updated_at : new Date() 
         }
 
-        let nip = req.params.nip
+        let nik = req.params.nik
 
         data.created_at = new Date() 
-        const result = await model.updateEmployee(data, nip)
+        const result = await model.updateEmployee(data, nik)
         res.status(200).json({
             code: 200, 
             message: 'Success',
@@ -105,13 +103,13 @@ controller.updateEmployee = async (req, res) => {
 controller.deleteEmployee = async (req, res) => {
     try {
         
-        let nip = req.params.nip
+        let nik = req.params.nik
 
-        const result = await model.deleteEmployee(nip)
+        const result = await model.deleteEmployee(nik)
         res.status(200).json({
             code: 200, 
             message: 'Success',
-            data: `Berhasil menghapus data dengan nip = ${nip}`,
+            data: `Berhasil menghapus data dengan nik = ${nik}`,
         })
     } catch (error) {
         console.log(error)

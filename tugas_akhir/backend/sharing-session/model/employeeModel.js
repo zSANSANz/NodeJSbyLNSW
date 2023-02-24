@@ -14,7 +14,7 @@ model.getAllEmployee = () => {
     })
 }
 
-model.getEmployeeByNip = (nik) => {
+model.getEmployeeByNik = (nik) => {
     return new Promise((resolve, rejects) => {
         db.query(`SELECT * FROM kelompok_3.tb_employee p WHERE p.nik = '${nik}'`, (err, res) => {
             if(err) {
@@ -33,7 +33,7 @@ model.postEmployee = (data) => {
                 nik
                 employee_name
                 tempat_lahir
-                tempat_lahir
+                tanggal_lahir
                 alamat
                 departement
                 jabatan
@@ -62,14 +62,14 @@ model.postEmployee = (data) => {
             ) RETURNING *`,
             [
                 data.nik,
-                data.nama_employee,
+                data.namaEmployee,
                 data.alamat,
-                data.tempat_lahir,
-                data.tanggal_lahir,
+                data.tempatLahir,
+                data.tanggalLahir,
                 data.gender,
                 data.usia,
-                data.created_at,
-                data.updated_at
+                data.createdAt,
+                data.updatedAt
             ],
         (err, res) => {
             if(err) {
