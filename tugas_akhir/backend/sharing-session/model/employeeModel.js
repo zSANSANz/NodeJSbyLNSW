@@ -4,7 +4,7 @@ let model = {}
 
 model.getAllEmployee = () => {
     return new Promise((resolve, rejects) => {
-        db.query(`SELECT * FROM kelompok_3.employee`, (err, res) => {
+        db.query(`SELECT * FROM kelompok_3.tb_employee`, (err, res) => {
             if(err) {
                 rejects(err)
             } else {
@@ -16,7 +16,7 @@ model.getAllEmployee = () => {
 
 model.getEmployeeByNip = (nik) => {
     return new Promise((resolve, rejects) => {
-        db.query(`SELECT * FROM kelompok_3.employee p WHERE p.nik = '${nik}'`, (err, res) => {
+        db.query(`SELECT * FROM kelompok_3.tb_employee p WHERE p.nik = '${nik}'`, (err, res) => {
             if(err) {
                 rejects(err)
             } else {
@@ -29,7 +29,7 @@ model.getEmployeeByNip = (nik) => {
 model.postEmployee = (data) => {
     return new Promise((resolve, rejects) => {
         console.log(data)
-        db.query(`insert into kelompok_3.employee(
+        db.query(`insert into kelompok_3.tb_employee(
                 nik
                 employee_name
                 tempat_lahir
@@ -84,7 +84,7 @@ model.postEmployee = (data) => {
 model.updateEmployee = (data, nik) => {
     return new Promise((resolve, rejects) => {
         console.log(data)
-        db.query(`UPDATE kelompok_3.employee set 
+        db.query(`UPDATE kelompok_3.tb_employee set 
                 nama_employee = $1,
                 alamat = $2,
                 tempat_lahir = $3,
@@ -119,7 +119,7 @@ model.updateEmployee = (data, nik) => {
 model.deleteEmployee = (nik) => {
     return new Promise((resolve, rejects) => {
         console.log(nik)
-        db.query(`DELETE FROM kelompok_3.employee 
+        db.query(`DELETE FROM kelompok_3.tb_employee 
             WHERE nik = $1                 
             RETURNING *`,
             [
