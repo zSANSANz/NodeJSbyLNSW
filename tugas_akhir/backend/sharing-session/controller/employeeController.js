@@ -41,15 +41,20 @@ controller.getEmployeeByNik = async (req, res) => {
 controller.postEmployee = async (req, res) => {
     try {
         let data = {
-           nik: req.body.nik,
-           namaEmployee: req.body.employee_name,
-           alamat: req.body.alamat,
-           tempatLahir: req.body.tempat_lahir,
-           tanggalLahir: req.body.tanggal_lahir,
-           gender: req.body.gender,
-           usia: req.body.usia,
-           createdAt: new Date(), 
-           updatedAt: req.body.updated_at,
+            nik: req.body.nik,
+            employee_name: req.body.employee_name,
+            tempat_lahir: req.body.tempat_lahir,
+            tanggal_lahir: req.body.tanggal_lahir,
+            alamat: req.body.alamat,
+            departement: req.body.departement,
+            jabatan: req.body.jabatan,
+            tanggal_bergabung: req.body.tanggal_bergabung,
+            tanggal_akhir_kontrak: req.body.tanggal_akhir_kontrak,
+            status: req.body.status,
+            created_at: req.body.created_at,
+            created_by: req.body.created_by,
+            updated_at: new Date(),
+            updated_by: req.body.updated_by,
         }
 
         const result = await model.postEmployee(data)
@@ -71,14 +76,20 @@ controller.postEmployee = async (req, res) => {
 controller.updateEmployee = async (req, res) => {
     try {
         let data = {
-            nik : req.body.nik,
-            nama_employee : req.body.nama_employee,
-            alamat : req.body.alamat,
-            tempat_lahir : req.body.tempat_lahir,
-            tanggal_lahir : req.body.tanggal_lahir,
-            gender : req.body.gender,
-            usia : req.body.usia,
-            updated_at : new Date() 
+            nik: req.body.nik,
+            employee_name: req.body.employee_name,
+            tempat_lahir: req.body.tempat_lahir,
+            tanggal_lahir: req.body.tanggal_lahir,
+            alamat: req.body.alamat,
+            departement: req.body.departement,
+            jabatan: req.body.jabatan,
+            tanggal_bergabung: req.body.tanggal_bergabung,
+            tanggal_akhir_kontrak: req.body.tanggal_akhir_kontrak,
+            status: req.body.status,
+            created_at: req.body.created_at,
+            created_by: req.body.created_by,
+            updated_at: new Date(),
+            updated_by: req.body.updated_by,
         }
 
         let nik = req.params.nik

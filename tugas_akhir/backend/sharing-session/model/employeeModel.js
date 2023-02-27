@@ -30,16 +30,16 @@ model.postEmployee = (data) => {
     return new Promise((resolve, rejects) => {
         console.log(data)
         db.query(`insert into kelompok_3.tb_employee(
-                nik
-                employee_name
-                tempat_lahir
-                tanggal_lahir
-                alamat
-                departement
-                jabatan
-                tanggal_bergabung
-                tanggal_akhir_kontrak
-                status
+                nik,
+                employee_name,
+                tempat_lahir,
+                tanggal_lahir,
+                alamat,
+                departement,
+                jabatan,
+                tanggal_bergabung,
+                tanggal_akhir_kontrak,
+                status,
                 created_at,
                 created_by,
                 updated_at,
@@ -62,14 +62,19 @@ model.postEmployee = (data) => {
             ) RETURNING *`,
             [
                 data.nik,
-                data.namaEmployee,
+                data.employee_name,
+                data.tempat_lahir,
+                data.tanggal_lahir,
                 data.alamat,
-                data.tempatLahir,
-                data.tanggalLahir,
-                data.gender,
-                data.usia,
-                data.createdAt,
-                data.updatedAt
+                data.departement,
+                data.jabatan,
+                data.tanggal_bergabung,
+                data.tanggal_akhir_kontrak,
+                data.status,
+                data.created_at,
+                data.created_by,
+                data.updated_at,
+                data.updated_by
             ],
         (err, res) => {
             if(err) {
@@ -85,26 +90,35 @@ model.updateEmployee = (data, nik) => {
     return new Promise((resolve, rejects) => {
         console.log(data)
         db.query(`UPDATE kelompok_3.tb_employee set 
-                nama_employee = $1,
-                alamat = $2,
-                tempat_lahir = $3,
-                tanggal_lahir = $4,
-                gender = $5,
-                usia = $6,
-                updated_at = $7,
-                divisi_id = $8
+                employee_name= $1,
+                tempat_lahir= $2,
+                tanggal_lahir= $3,
+                alamat= $4,
+                departement= $5,
+                jabatan= $6,
+                tanggal_bergabung= $7,
+                tanggal_akhir_kontrak= $8,
+                status= $9,
+                created_at= $10,
+                created_by= $11,
+                updated_at= $12,
+                updated_by= $13,
             WHERE nik = $9                 
             RETURNING *`,
             [
-                data.nama_employee,
-                data.alamat,
+                data.employee_name,
                 data.tempat_lahir,
                 data.tanggal_lahir,
-                data.gender,
-                data.usia,
+                data.alamat,
+                data.departement,
+                data.jabatan,
+                data.tanggal_bergabung,
+                data.tanggal_akhir_kontrak,
+                data.status,
+                data.created_at,
+                data.created_by,
                 data.updated_at,
-                data.divisi_id,
-                nik
+                data.nik,
             ],
         (err, res) => {
             if(err) {
