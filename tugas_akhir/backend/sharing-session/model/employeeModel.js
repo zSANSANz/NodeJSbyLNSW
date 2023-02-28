@@ -102,8 +102,8 @@ model.updateEmployee = (data, nik) => {
                 created_at= $10,
                 created_by= $11,
                 updated_at= $12,
-                updated_by= $13,
-            WHERE nik = $9                 
+                updated_by= $13
+            WHERE nik = $14                 
             RETURNING *`,
             [
                 data.employee_name,
@@ -118,6 +118,7 @@ model.updateEmployee = (data, nik) => {
                 data.created_at,
                 data.created_by,
                 data.updated_at,
+                data.created_by,
                 data.nik,
             ],
         (err, res) => {
